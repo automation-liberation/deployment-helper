@@ -1,7 +1,7 @@
 image:
   registry: irori.johansson.tech
   package: automation-liberation/deployment-helper
-  tag: 0.1.0
+  tag: 0.1.1
 changelog:
   Added:
-    - Read yaml file and push data to changelog backend
+    - Install package as a native command

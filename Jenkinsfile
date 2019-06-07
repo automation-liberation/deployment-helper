@@ -37,7 +37,7 @@ podTemplate(label: label, containers: [
         }
         stage('Update Changelog') {
             container('deployment-helper') {
-                sh 'python helper.py changelog -p build-properties.yaml'
+                sh 'deployment-helper changelog -p build-properties.yaml'
             }
         }
     }
