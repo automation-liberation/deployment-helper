@@ -30,7 +30,7 @@ podTemplate(label: label, containers: [
                         docker login -u ${USER} -p ${PASSWORD} https://${properties.image.registry}
                         docker build -t ${properties.image.registry}/${properties.image.package}:${properties.image.tag} .
                         docker tag ${properties.image.registry}/${properties.image.package}:${properties.image.tag} ${properties.image.registry}/${properties.image.package}:latest
-                        docker push ${properties.image.registry}/${properties.image.package}:${properties.image.tag}
+                        docker push ${properties.image.registry}/${properties.image.package}
                     """
                 }
                 sh "docker rmi ${properties.image.registry}/${properties.image.package}:${properties.image.tag}"
