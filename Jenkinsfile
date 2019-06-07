@@ -3,7 +3,7 @@ def properties
 
 podTemplate(label: label, containers: [
     containerTemplate(name: 'python', image: 'python:3.7', command: 'cat', ttyEnabled: true),
-    containerTemplate(name: 'deployment-helper', image: 'irori.johansson.tech/automation-liberation/deployment-helper', command: 'cat', ttyEnabled: true),
+    containerTemplate(name: 'deployment-helper', image: 'irori.johansson.tech/automation-liberation/deployment-helper:latest', command: 'cat', ttyEnabled: true),
     containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true)
     ],
     volumes: [
@@ -29,6 +29,7 @@ podTemplate(label: label, containers: [
                     sh """
                         docker login -u ${USER} -p ${PASSWORD} https://${properties.image.registry}
                         docker build -t ${properties.image.registry}/${properties.image.package}:${properties.image.tag} .
+                        docker tag ${properties.image.registry}/${properties.image.package}:${properties.image.tag} ${properties.image.registry}/${properties.image.package}:latest
                         docker push ${properties.image.registry}/${properties.image.package}:${properties.image.tag}
                     """
                 }
